@@ -17,6 +17,20 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+bin/
+obj/
+Debug/
+Release/
+*.opensdf
+*.tlog
+*.log
+TestResult.xml
+*.VisualState.xml
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
