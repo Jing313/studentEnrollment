@@ -23,9 +23,7 @@ bld/
 _ReSharper.*/
 *.sdf
 **/bin/
-**/bin/Debug/net8.0/
 **/obj/
-**/obj/Debug/net8.0/
 Debug/
 Release/
 *.opensdf
