@@ -119,6 +119,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -219,15 +220,16 @@
             HorizontalAlignment="Center"        
             Margin="20 10 0 0"      
             Command="{Binding PostButtonClicked}"
-            CommandParameter="{Binding NewCourse}"
             Grid.Row="9"        
             Grid.ColumnSpan="2"/>
+
+            
 
             <TextBlock x:Name="TextBlockMessage" 
                Text="{Binding ShowPostMessage}"
                HorizontalAlignment="Center"    
                Margin="20 8 0 0"      
-               Grid.Row="10"    
+               Grid.Row="11"    
                Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
