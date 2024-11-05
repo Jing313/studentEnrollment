@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using StudentEnrollment_Frontend.ViewModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,13 @@ namespace StudentEnrollment_Frontend
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
         }
+
+        //private void ButtonAddTest_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Call CreateNewCourse directly
+        //    ((MainWindowViewModel)DataContext).CreateNewCourse();
+        //}
     }
 }

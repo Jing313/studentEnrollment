@@ -1,14 +1,43 @@
 # This file is a template, and might need editing before it works on your project.
 # Full project: https://gitlab.com/pages/plain-html
+ 
+stages:
+  - build
+  - test
+  - deploy
 
-image: busybox
-
-pages:
-  stage: deploy
+build_frontend:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:8.0
   script:
-    - echo "The site will be deployed to $CI_PAGES_URL"
-  artifacts:
-    paths:
-      - public
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - cd StudentEnrollment-Frontend/StudentEnrollment-Frontend.sln
+    - dotnet restore
+    - dotnet build -c Release
+
+build_backend:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:8.0
+  script:
+    - cd StudentEnrollementSystem-Backend/StudentEnrollmentSystem-Backend.sln
+    - dotnet restore
+    - dotnet build -c Release
+
+test_backend:
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:8.0 
+  script:
+    - cd StudentEnrollementSystem-Backend/StudentEnrollmentSystem-Backend.sln
+    - dotnet test -c Release
+
+deploy:
+  tags:
+    - windows_vm
+  needs:
+    - job: version-job
+    - job: build_setup
+  script:
+    - echo "Deploying..."
+  environment:
+    name: production
+  only:
+    - main  # Deploy only from the main branch
